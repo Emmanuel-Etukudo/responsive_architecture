@@ -6,10 +6,23 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return base widget to monitor screen changes
     return BaseWidget(builder: (context, sizingInformation) {
       return Scaffold(
         body: Center(
-          child: Text(sizingInformation.toString()),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 150,
+                margin: EdgeInsets.all(200),
+                color: Colors.amber,
+                //base widget as child to monitor widget
+                child: BaseWidget(builder: (context, sizingInfo) => Text(sizingInfo.toString())),
+              ),
+              Text(sizingInformation.toString()),
+            ],
+          ),
         ),
       );
     });
